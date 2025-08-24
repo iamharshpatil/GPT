@@ -5,6 +5,7 @@ import Credits from './pages/Credits'
 import Community from './pages/Communtiy'
 import { useState } from 'react'
 import { assets } from './assets/assets'
+import './assets/prism.css' 
 
 const App = () => {
   const [isMenuopen, setisMenuopen] = useState(false)
