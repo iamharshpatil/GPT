@@ -27,7 +27,7 @@ const Sidebar = ({ isMenuopen, setisMenuopen }) => {
       <div className="flex-1 overflow-y-scroll mt-3 text-sm space-y-3">
         {
           chats.filter((chat)=> chat.messages[0] ?  chat.messages[0]?.content.toLowerCase().includes(search.toLowerCase()) : chat.name.toLowerCase().includes(search.toLowerCase())).map((chat)=>(
-            <div  key={chat._id} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
+            <div onClick={()=>{navigate('/'); setSelectedChat(chat); setisMenuopen(false)}}  key={chat._id} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
                              <div className="flex flex-col">
                 <p className="truncate w-full">{chat.messages.length > 0 ? chat.messages[0].content.slice(0,32): chat.name }</p>
                 <p className="text-xs text-gray-500 dark:text-[#B1A6C0]">{moment(chat.updatedAt).fromNow()}</p>
@@ -38,14 +38,14 @@ const Sidebar = ({ isMenuopen, setisMenuopen }) => {
         }
       </div>
 
-      <div onClick={()=> {navigate("/community")}} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
+      <div onClick={()=> {navigate("/community"); setisMenuopen(false)}} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
         <img src={assets.gallery_icon} className="w-4.5 not-dark:invert" alt="" />
         <div className="flex flex-col text-sm">
           <p>Community Images</p>
         </div>
       </div>
 
-      <div onClick={()=> {navigate("/credits")}} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
+      <div onClick={()=> {navigate("/credits"); setisMenuopen(false)}} className="flex items-center gap-3 p-3 mt-3 border border-gray-400 dark:border-white/20 rounded-md hover:bg-[#80609F]/30 cursor-pointer transition-all duration-200">
         <img src={assets.diamond_icon} className="w-4.5 dark:invert" alt="" />
         <div className="flex flex-col text-sm">
           <p>Credits : {user?.credits}</p>
